@@ -18,7 +18,6 @@ var rootCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		key := args[0]
-		fmt.Println("key:", key)
 
 		data, err := read.FetchData()
 		if err != nil {

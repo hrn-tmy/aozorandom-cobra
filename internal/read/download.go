@@ -56,6 +56,7 @@ func downloadData() ([]byte, error) {
 	return nil, fmt.Errorf("ZIPの中にファイルが存在しませんでした。")
 }
 
+// FetchData は、データを取得します
 func FetchData() ([]byte, error) {
 	path, err := cache.CachePath()
 	if err != nil {
@@ -80,6 +81,7 @@ func FetchData() ([]byte, error) {
 	return data, nil
 }
 
+// ParseCSV は、CSVファイルからデータを抽出し必要なデータを返却します
 func ParseCSV(r io.Reader) ([]Book, error) {
 	reader := transform.NewReader(r, japanese.ShiftJIS.NewDecoder())
 	csvReader := csv.NewReader(reader)

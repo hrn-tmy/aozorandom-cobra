@@ -23,6 +23,7 @@ func CachePath() (string, error) {
 	return filepath.Join(cacheDir, date + "-list.csv"), nil
 }
 
+// IsCacheValid は、キャッシュが有効かをどうかチェックします
 func IsCacheValid(path string) bool {
 	info, err := os.Stat(path)
 	if err != nil {
@@ -32,10 +33,12 @@ func IsCacheValid(path string) bool {
 	return time.Since(info.ModTime()) < cacheExpiry
 }
 
+// LoadCache は、キャッシュからデータを読み込みます
 func LoadCache(path string) ([]byte, error) {
 	return os.ReadFile(path)
 }
 
+// SaveData は、データをキャッシュとして保存します
 func SaveData(path string, data []byte) error {
 	return os.WriteFile(path, data, 0644)
 }
